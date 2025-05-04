@@ -165,7 +165,7 @@ window_rules:
 
   - commands: ["move --workspace 5"]
     match:
-      - window_title: { regex: "Musik" } 
+      - window_title: { regex: "Musik|media player" } 
 
   - commands: ["move --workspace 9"]
     match:
