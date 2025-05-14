@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 sudo apt install zsh
 # Change default shell from Bash to ZSH
