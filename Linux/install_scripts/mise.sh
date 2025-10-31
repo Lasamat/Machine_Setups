@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./zsh_util.sh
+
 if command -v mise >/dev/null 2>&1; then
   echo "mise is already installed. So we skip it."
 else
