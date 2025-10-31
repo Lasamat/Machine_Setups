@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List of packages to check
-packages=("make" "gcc" "ripgrep" "unzip" "git" "xclip" "fd-find" "fzf" "curl")
+packages=("make" "gcc" "ripgrep" "unzip" "git" "xclip" "fd-find" "fzf" "curl" "jq")
 
 # Function to check if a package is installed
 is_installed() {
