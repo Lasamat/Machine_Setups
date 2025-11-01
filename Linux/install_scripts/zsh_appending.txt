@@ -1,0 +1,7 @@
+alias repo='cd /mnt/g/Repository/'
+export PATH="$HOME/.local/bin:$PATH"
+# Activate mise
+eval "$(~/.local/bin/mise activate zsh)"
+eval "$(ssh-agent -s)"
+alias gitkey="ssh-add ~/.ssh/id_ed25519"
+export PATH="$HOME/.local/scripts:$PATH"

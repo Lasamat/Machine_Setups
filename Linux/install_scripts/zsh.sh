@@ -17,12 +17,7 @@ else
   # echo "ZSH_THEME=\"agnoster\"" >.zshrc
   # echo "source $ZSH/oh-my-zsh.sh" >.zshrc
 
-  # Set `~/.local/bin` to PATH
-  append_to_zshrc 'export PATH="$HOME/.local/bin:$PATH"' '.local/bin'
-  # Set `~/.local/scripts` to PATH
-  append_to_zshrc 'export PATH="$HOME/.local/scripts:$PATH"' '.local/bin'
-  # Start ssh-agent when zsh loads and add alias to load ssh key
-  append_to_zshrc 'eval "$(ssh-agent -s)"' 'ssh-agent'
-  append_to_zshrc 'alias gitkey="ssh-add ~/.ssh/id_ed25519"' 'alias gitkey'
-  append_to_zshrc 'alias v="fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | { read file && nvim "$file"; }"'
+  cat zsh_appending.txt >> ~/.zshrc
+
+  reload_zsh_config
 fi
