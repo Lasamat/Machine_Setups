@@ -10,3 +10,13 @@ v() {
     local dir="${1:-.}"  # Default to current directory if no argument is provided
     fd --type f --hidden --exclude .git . "$dir" | fzf-tmux -p --reverse | { read file && nvim "$file"; }
 }
+
+c() {
+    local dir="${1:-.}"  # Default to current directory if no argument is provided
+    # Use fd to list directories, then use fzf to select one and finally change into it
+    local chosen_dir
+    chosen_dir=$(fd --type d --hidden --exclude .git . "$dir" | fzf-tmux -p --reverse) || return
+    if [ -n "$chosen_dir" ]; then
+        cd "$chosen_dir" || return
+    fi
+}
