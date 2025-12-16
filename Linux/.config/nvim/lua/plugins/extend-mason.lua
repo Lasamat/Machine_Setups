@@ -10,7 +10,6 @@ return {
       "css-lsp",
       "json-lsp",
       "roslyn",
-      "rzls",
       "csharp-language-server",
     },
   },
