@@ -36,10 +36,10 @@ gaps:
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '40px'
-    right: '2px'
-    bottom: '2px'
-    left: '2px'
+    top: '8px'
+    right: '8px'
+    bottom: '8px'
+    left: '8px'
 
 window_effects:
   # Visual effects to apply to the focused window.
@@ -105,23 +105,26 @@ workspaces:
     display_name: "2 - Web"
     keep_alive: true
   - name: "3"
-    display_name: "3 - Coding"
+    display_name: "3 - Terminal"
     keep_alive: true
   - name: "4"
-    display_name: "4 - Comms"
-    keep_alive: true
+    display_name: "4 - Dev Browser"
+    keep_alive: false
   - name: "5"
-    display_name: "5 - Musik"
+    display_name: "5 - Dev GUI"
     keep_alive: false
   - name: "6"
+    display_name: "6 - Comms"
     keep_alive: false
   - name: "7"
-    keep_alive: false
+    display_name: "7 - Musik"
+    keep_alive: true
   - name: "8"
+    display_name: "8 - Media"
     keep_alive: false
   - name: "9"
-    display_name: "9 - Streaming"
-    keep_alive: true
+    display_name: "9 - Gaming"
+    keep_alive: false
 
 window_rules:
   - commands: ['ignore']
@@ -145,31 +148,47 @@ window_rules:
       # Ignore Task Manager
       - window_process: { equals: 'Taskmgr' }
 
-  # Move Certain Windows to specific workspaces
-  - commands: ["move --workspace 2"]
+  # Terminal
+  - commands: ['move --workspace 3']
     match:
-      - window_title: { regex: "Webradio|glazewm" } 
+      - window_process: { regex: 'Terminal' }
 
-  - commands: ["move --workspace 3"]
+  # Firefox catch-all first, then prefixed windows override it.
+  # Web
+  - commands: ['move --workspace 2']
     match:
-      #devenv=visual studio
-      - window_process: { regex: "WindowsTerminal|Code|devenv" } 
+      - window_process: { equals: 'firefox' }
 
-  - commands: ["move --workspace 3"]
+  # Dev Browser
+  - commands: ['move --workspace 4']
     match:
-      - window_title: { regex: "Exercism|Elixir" } 
+      - window_title: { regex: '\[DEV\]' }
 
-  - commands: ["move --workspace 4"]
+  # Musik
+  - commands: ['move --workspace 7']
     match:
-      - window_process: { regex: thunderbird|ms-teams|Discord" } 
+      - window_title: { regex: '\[MUSIC\]|Webradio' }
 
-  - commands: ["move --workspace 5"]
+  # Media
+  - commands: ['move --workspace 8']
     match:
-      - window_title: { regex: "Musik|media player" } 
+      - window_title: { regex: '\[MEDIA\]' }
 
-  - commands: ["move --workspace 9"]
+  # Comms
+  - commands: ['move --workspace 6']
     match:
-      - window_title: { regex: "Anime|Serie|YouTube|Twitch" }                      
+      - window_process: { regex: 'thunderbird|ms-teams' }
+
+  # Dev GUI
+  - commands: ['move --workspace 5']
+    match:
+      - window_process: { regex: 'dbeaver' }
+      - window_title: { regex: '\[WORK\]' }
+
+  # Home
+  - commands: ['move --workspace 1']
+    match:
+      - window_process: { regex: 'obsidian|superproductivity' }
 
 
 binding_modes:
@@ -282,9 +301,9 @@ keybindings:
   # Terminal and Git Bash respectively.
   - commands: ['shell-exec cmd']
     bindings: ['alt+enter']
-  - commands: ['shell-exec wt -p Elixir ; new-tab -p Elixir']
-    bindings: ['alt+e+enter']
 
+  - commands: ['shell-exec --hide-window pwsh -ExecutionPolicy Bypass -File G:\Repository\Machine_Setups\Windows\Tools\keybindings\keybindings-lookup.ps1']
+    bindings: ['alt+shift+g']
 
   # Focus the next/previous workspace defined in `workspaces` config.
   - commands: ['focus --next-workspace']
