@@ -156,15 +156,62 @@ $script:FilterBox = $script:Window.FindName('FilterBox')
 $script:Results   = $script:Window.FindName('Results')
 $script:CountText = $script:Window.FindName('CountText')
 
+function Get-FuzzyMatchCost {
+  param([string]$Text, [string]$Term)
+
+  # Returns the total gap between consecutive matched characters:
+  # 0 for a contiguous substring, >0 for a fuzzy (subsequence) match,
+  # -1 if the term cannot be matched. Cost drives result ordering.
+  if ([string]::IsNullOrEmpty($Term)) { return 0 }
+
+  # Contiguous substring wins (e.g. "floating" in "toggle-floating").
+  if ($Text.IndexOf($Term, [System.StringComparison]::Ordinal) -ge 0) { return 0 }
+
+  $cost = 0
+  $searchFrom = 0
+  $prevIndex = $null
+  foreach ($ch in $Term.ToCharArray()) {
+    $idx = $Text.IndexOf([string]$ch, $searchFrom)
+    if ($idx -lt 0) { return -1 }
+    if ($null -ne $prevIndex) { $cost += ($idx - $prevIndex - 1) }
+    $prevIndex = $idx
+    $searchFrom = $idx + 1
+  }
+  return $cost
+}
+
+function Get-FuzzyQueryCost {
+  param([string]$Text, [string]$Query)
+
+  # Each whitespace-separated term must match somewhere in $Text; the total
+  # cost is the sum across terms (-1 if any term fails). Lower is better.
+  $terms = @($Query -split '\s+' | Where-Object { $_ })
+  if ($terms.Count -eq 0) { return 0 }
+
+  $total = 0
+  foreach ($term in $terms) {
+    $cost = Get-FuzzyMatchCost -Text $Text -Term $term
+    if ($cost -lt 0) { return -1 }
+    $total += $cost
+  }
+  return $total
+}
+
 function Update-Results {
   $query = $script:FilterBox.Text.Trim().ToLower()
-  $items = if ($query) {
-    @($script:AllEntries | Where-Object { $_.SearchText.Contains($query) })
+  if ($query) {
+    $scored = foreach ($e in $script:AllEntries) {
+      $cost = Get-FuzzyQueryCost -Text $e.SearchText -Query $query
+      if ($cost -ge 0) { [pscustomobject]@{ Entry = $e; Cost = $cost } }
+    }
+    $items = @($scored | Sort-Object Cost | ForEach-Object { $_.Entry })
   }
   else {
-    @($script:AllEntries)
+    $items = @($script:AllEntries)
   }
 
+  # Reset ItemsSource so the ListView always repopulates from the new list.
+  $script:Results.ItemsSource = $null
   $script:Results.ItemsSource = $items
   $script:CountText.Text = "$($items.Count) / $($script:AllEntries.Count)"
   $script:Results.SelectedIndex = if ($items.Count -gt 0) { 0 } else { -1 }
