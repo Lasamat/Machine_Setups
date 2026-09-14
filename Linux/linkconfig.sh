@@ -14,7 +14,7 @@ MAPPINGS=(
   ".zshrc|.zshrc"
   ".config/nvim|.config/nvim"
   "../Shared/tmux/tmux.conf|.tmux.conf"
-  "../Shared/tmux/tmux.linux.conf|.tmux.linux.conf"
+  "../Shared/tmux/tmux.linux.conf|.tmux.os.conf"
   "scripts/tmux-cht.sh|.local/scripts/tmux-cht.sh"
   "scripts/gitmoji_selector.sh|.local/scripts/gitmoji_selector.sh"
   "scripts/gitmojis.json|.local/scripts/gitmojis.json"

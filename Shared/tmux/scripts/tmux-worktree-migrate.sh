@@ -14,6 +14,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/lib/worktree-lib.sh"
 
 WORKTREE_ROOT="$(resolve_worktree_root)"
+mkdir -p "$WORKTREE_ROOT"
 WORKTREE_ROOT="$(cd "$WORKTREE_ROOT" && pwd)"
 
 migrate_one() {
@@ -45,7 +46,7 @@ migrate_one() {
 
   local reponame="$(basename "$src")"
   local repo="$WORKTREE_ROOT/$reponame"
-  local session="$(sanitize "$current_branch")"
+
 
   if [[ -d "$repo/.bare" ]]; then
     echo "  ! Already migrated ($repo/.bare exists), switching into it." >&2

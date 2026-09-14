@@ -13,7 +13,8 @@ source "$SCRIPT_DIR/lib/worktree-lib.sh"
 FOLDER_PATH="${1:?Usage: tmux-worktree-session.sh <worktree-folder-path>}"
 FOLDER_PATH="$(cd "$FOLDER_PATH" && pwd)"
 
-SESSION="$(sanitize "$(basename "$FOLDER_PATH")")"
+REPONAME="$(repo_name_from_path "$FOLDER_PATH")"
+SESSION="$(session_name_for "$REPONAME" "$(basename "$FOLDER_PATH")")"
 
 if has_tmux_session "$SESSION"; then
   tmux switch-client -t "$SESSION" 2>/dev/null || tmux attach-session -t "$SESSION"

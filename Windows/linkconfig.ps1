@@ -19,7 +19,7 @@ if (-not $isAdmin) {
 $mappings = @(
     @{ source = 'config/glazewm/config.yaml'; destination = '.glzr/glazewm/config.yaml' }
     @{ source = '../Shared/tmux/tmux.conf'; destination = '.tmux.conf' }
-    @{ source = '../Shared/tmux/tmux.windows.conf'; destination = '.tmux.windows.conf' }
+    @{ source = '../Shared/tmux/tmux.windows.conf'; destination = '.tmux.os.conf' }
     @{ source = '../Shared/tmux/scripts'; destination = '.local/scripts/worktree' }
 )
 
