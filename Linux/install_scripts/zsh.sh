@@ -13,11 +13,9 @@ else
   # Install oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-  # TODO fix this because its not working yet
-  # echo "ZSH_THEME=\"agnoster\"" >.zshrc
-  # echo "source $ZSH/oh-my-zsh.sh" >.zshrc
-
-  cat zsh_appending.txt >> ~/.zshrc
-
   reload_zsh_config
 fi
+
+# NOTE: ~/.zshrc is repo-owned and symlinked by ../linkconfig.sh (which must
+# run after this script, since a fresh oh-my-zsh install writes a template
+# .zshrc that linkconfig preserves as a backup).

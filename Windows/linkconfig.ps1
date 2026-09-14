@@ -18,6 +18,9 @@ if (-not $isAdmin) {
 # Each entry: source relative to $PSScriptRoot, destination relative to $HOME.
 $mappings = @(
     @{ source = 'config/glazewm/config.yaml'; destination = '.glzr/glazewm/config.yaml' }
+    @{ source = '../Shared/tmux/tmux.conf'; destination = '.tmux.conf' }
+    @{ source = '../Shared/tmux/tmux.windows.conf'; destination = '.tmux.windows.conf' }
+    @{ source = '../Shared/tmux/scripts'; destination = '.local/scripts/worktree' }
 )
 
 $srcRoot = $PSScriptRoot
