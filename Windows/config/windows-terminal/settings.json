@@ -1,11 +1,9 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
-    [
+    "actions": [
         {
-            "command":
-            {
+            "command": {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
@@ -17,8 +15,7 @@
             "id": "User.find"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "copy",
                 "singleLine": false
             },
@@ -37,8 +34,7 @@
     "copyFormatting": "all",
     "copyOnSelect": false,
     "defaultProfile": "{d881cca9-65e8-5d5e-8c4f-c38d52ec28b5}",
-    "keybindings":
-    [
+    "keybindings": [
         {
             "id": "User.splitPane.A6751878",
             "keys": "alt+shift+d"
@@ -56,33 +52,27 @@
             "keys": "alt+enter"
         }
     ],
-    "newTabMenu":
-    [
+    "newTabMenu": [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles":
-    {
-        "defaults":
-        {
-            "backgroundImage": "C:\\Users\\lasamat\\Pictures\\wallpapers\\HEROSCREEN (4).png",
+    "profiles": {
+        "defaults": {
+            "backgroundImage": "",
             "backgroundImageOpacity": 0.3,
             "bellStyle": "none",
             "colorScheme": "Catppuccin Mocha",
-            "font":
-            {
+            "font": {
                 "face": "FiraCode Nerd Font"
             }
         },
-        "list":
-        [
+        "list": [
             {
                 "backgroundImageOpacity": 0.3,
                 "backgroundImageStretchMode": "fill",
                 "colorScheme": "Dark+",
-                "font":
-                {
+                "font": {
                     "face": "FiraCode Nerd Font"
                 },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
@@ -131,8 +121,7 @@
             }
         ]
     },
-    "schemes":
-    [
+    "schemes": [
         {
             "background": "#1E1E2E",
             "black": "#45475A",
@@ -158,24 +147,20 @@
         }
     ],
     "showTabsInTitlebar": false,
-    "themes":
-    [
+    "themes": [
         {
             "name": "Catppuccin Mocha",
-            "tab":
-            {
+            "tab": {
                 "background": "#1E1E2EFF",
                 "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow":
-            {
+            "tabRow": {
                 "background": "#181825FF",
                 "unfocusedBackground": "#11111BFF"
             },
-            "window":
-            {
+            "window": {
                 "applicationTheme": "dark",
                 "experimental.rainbowFrame": false,
                 "frame": null,
