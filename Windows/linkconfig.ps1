@@ -80,3 +80,18 @@ Write-Host "Reloading GlazeWM config..." -ForegroundColor Cyan
 glazewm command wm-reload-config
 
 Write-Host "Done." -ForegroundColor Green
+
+$Folder = Join-Path (Join-Path $PSScriptRoot "Tools") "scripts"
+echo "Ziel-Ordner: $Folder"
+
+$RegPath = [Environment]::GetEnvironmentVariable("Path", "User")
+$CurrentDirs = $RegPath -split ";" | Where-Object { $_ -ne "" }
+
+if ($Folder -notin $CurrentDirs) {
+    $NewPath = ($CurrentDirs + $Folder) -join ";"
+    [Environment]::SetEnvironmentVariable("Path", $NewPath, "User")
+    Write-Host "Erfolgreich hinzugefügt: $Folder" -ForegroundColor Green
+} else {
+    Write-Host "Ordner existiert bereits im PATH." -ForegroundColor Yellow
+}
+

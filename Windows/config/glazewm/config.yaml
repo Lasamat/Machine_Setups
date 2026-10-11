@@ -169,10 +169,10 @@ window_effects:
 
     # Change the transparency of the window.
     transparency:
-      enabled: false
+      enabled: true
       # Can be something like '95%' or '0.95' for slightly transparent windows.
       # '0' or '0%' is fully transparent (and, by consequence, unfocusable).
-      opacity: '95%'
+      opacity: '90%'
 
   # Visual effects to apply to non-focused windows.
   other_windows:
@@ -186,7 +186,7 @@ window_effects:
       style: 'square'
     transparency:
       enabled: true
-      opacity: '80%'
+      opacity: '50%'
 
 window_behavior:
   # New windows are created in this state whenever possible.
@@ -430,6 +430,33 @@ binding_modes:
       # Redraw all windows.
       - commands: ['wm-redraw']
         bindings: ['r']
+
+      # Change background image
+      - commands: ['shell-exec --hide-window pwsh -Command RandomWallpaper.ps1']
+        bindings: ['b']
+      - commands: ["set-transparency --opacity 10%"]
+        bindings: ["1"]
+      - commands: ["set-transparency --opacity 20%"]
+        bindings: ["2"]
+      - commands: ["set-transparency --opacity 30%"]
+        bindings: ["3"]
+      - commands: ["set-transparency --opacity 40%"]
+        bindings: ["4"]
+      - commands: ["set-transparency --opacity 50%"]
+        bindings: ["5"]
+      - commands: ["set-transparency --opacity 60%"]
+        bindings: ["6"]
+      - commands: ["set-transparency --opacity 70%"]
+        bindings: ["7"]
+      - commands: ["set-transparency --opacity 80%"]
+        bindings: ["8"]
+      - commands: ["set-transparency --opacity 90%"]
+        bindings: ["9"]
+        
+      # Alt + 0 setzt das Fenster wieder komplett deckend (100%)
+      - commands: ["set-transparency --opacity 100%"]
+        bindings: ["0"]
+
 
       # Press enter/escape to return to default keybindings.
       - commands: ['wm-disable-binding-mode --name window']
