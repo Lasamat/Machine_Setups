@@ -22,6 +22,7 @@ $mappings = @(
     @{ source = '../Shared/tmux/tmux.conf'; destination = '.tmux.conf' }
     @{ source = '../Shared/tmux/tmux.windows.conf'; destination = '.tmux.os.conf' }
     @{ source = '../Shared/tmux/scripts'; destination = '.local/scripts/worktree' }
+    @{ source = 'config/windows-terminal/settings.json'; destination = 'AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json' }
 )
 
 $srcRoot = $PSScriptRoot
