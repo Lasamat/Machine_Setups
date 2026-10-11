@@ -436,6 +436,12 @@ binding_modes:
       # Change background image
       - commands: ['shell-exec --hide-window pwsh -Command RandomWallpaper.ps1']
         bindings: ['b']
+
+      # Toggle Taskbar Visibility
+      - commands: ['shell-exec --hide-window pwsh -Command ToggleTaskbar.ps1']
+        bindings: ['t']
+
+      # Set Transparency of active window
       - commands: ["set-transparency --opacity 10%"]
         bindings: ["1"]
       - commands: ["set-transparency --opacity 20%"]
