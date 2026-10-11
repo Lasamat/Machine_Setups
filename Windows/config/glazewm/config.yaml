@@ -376,7 +376,9 @@ binding_modes:
       # Launch CMD terminal. Alternatively, use `shell-exec wt` or
       # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
       # Terminal and Git Bash respectively.
-      - commands: ['shell-exec wt']
+        # wt alias is broken for me so we use a workaround
+        # cmd /c opens a cmd terminal, runs a command and closes afterwards
+      - commands: ['shell-exec cmd /c start wt']
         bindings: ['alt+enter']
 
       - commands: ['shell-exec --hide-window pwsh -ExecutionPolicy Bypass -File G:\Repository\Machine_Setups\Windows\Tools\keybindings\keybindings-lookup.ps1']
