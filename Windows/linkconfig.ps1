@@ -22,6 +22,7 @@ $mappings = @(
     @{ source = '../Shared/tmux/tmux.conf'; destination = '.tmux.conf' }
     @{ source = '../Shared/tmux/tmux.windows.conf'; destination = '.tmux.os.conf' }
     @{ source = '../Shared/tmux/scripts'; destination = '.local/scripts/worktree' }
+    @{ source = '../Shared/nvim'; destination = 'AppData/Local/nvim' }
     @{ source = 'config/powershell/Microsoft.PowerShell_profile.ps1'; destination = 'Documents/PowerShell/Microsoft.PowerShell_profile.ps1' }
     @{ source = 'config/windows-terminal/settings.json'; destination = 'AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json' }
 )
