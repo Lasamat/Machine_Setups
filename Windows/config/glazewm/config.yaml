@@ -381,6 +381,10 @@ binding_modes:
       - commands: ['shell-exec cmd /c start wt']
         bindings: ['alt+enter']
 
+      # Launch a floating PowerShell scratch terminal on the current workspace.
+      - commands: ['shell-exec --hide-window pwsh -ExecutionPolicy Bypass -File G:\Repository\Machine_Setups\Windows\Tools\scripts\QuickTerminal.ps1']
+        bindings: ['s']
+
       - commands: ['shell-exec --hide-window pwsh -ExecutionPolicy Bypass -File G:\Repository\Machine_Setups\Windows\Tools\keybindings\keybindings-lookup.ps1']
         bindings: ['shift+oem_question']
 
