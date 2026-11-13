@@ -1,0 +1,25 @@
+# =========================================================================
+# VIM MODAL ENGINE CONFIGURATION MAP
+# Format: Target Process Name | Chord Sequence | Remapped Output | Description
+# =========================================================================
+
+SuperProductivity  | ta    | SHIFT,a         | Add a new task item instantly
+SuperProductivity  | j     | DOWN            | Navigation down tracking
+SuperProductivity  | k     | UP              | Navigation up tracking
+SuperProductivity  | gt    | SHIFT,T         | Go to today
+SuperProductivity  | td    | d               | Toggle completed
+SuperProductivity  | te    | t               | Edit estimate / time spent
+SuperProductivity  | ti    | i               | Show info
+SuperProductivity  | tf    | w               | Go to first task
+SuperProductivity  | tu    | u               | unschedule task
+SuperProductivity  | tx    | BACKSPACE       | delete task
+SuperProductivity  | ts    | y               | start task
+notepad            | w     | CONTROL,S       | Save active text buffer to disk
+notepad            | ta    | CONTROL,A       | Select all
+notepad            | h     | LEFT            | Navigation left tracking
+notepad            | j     | DOWN            | Navigation down tracking
+notepad            | k     | UP              | Navigation up tracking
+notepad            | l     | RIGHT           | Navigation right tracking
+WindowsTerminal    | 1     | CTRL,ALT,1      | Switch to tab, index 0
+WindowsTerminal    | 2     | CTRL,ALT,2      | Switch to tab, index 1
+WindowsTerminal    | c     | CTRL,SHIFT,1    | Open new Powershell Tab
